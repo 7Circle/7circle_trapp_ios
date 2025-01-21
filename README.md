@@ -178,7 +178,7 @@ These states could be used to ensure that the translation operation is done only
 
 ### Localization
 
-After the synchronization, localization keys can be translated. To do it there are two functions, `translate` and `getTranslationFor`; the difference between them is how the not-found error is handled.
+After the synchronization, localization keys can be translated. To do it there are two functions, `translate` and `getTranslationFor`; the difference between them is how the translation errors are handled.
 
 ``` swift
 let string1 = translator.translate("test.plain")
@@ -202,7 +202,7 @@ let string2 = translator.translate("test.substring2", ["ipsum", "consectetur"])
 // string2 -> "Lorem consectetur dolor sit amet, ipsum adipiscing elit."
 ```
 
-> **_NOTE:_**  When using the method `getTranslationFor`, the `DatabaseError` will describe the reason of the failure.
+> **_NOTE:_**  If placeholder substitution within the getTranslationFor method fails, a ReplacingError exception will be raised. This exception will contain a detailed description of the underlying cause for the substitution failure.
 
 ### Change language
 
