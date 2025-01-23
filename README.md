@@ -3,35 +3,7 @@
 </p>
 
 # TrAPP iOS Library
-Version 1.1.0
-
-## ⚠️ Breaking Changes
-With the introduction of offline mode in version 1.1.0, the order of the parameters to be passed to the `init()` of `TranslatorConfigurationModel` has changed. The new signature is the following:
-```swift
-TranslatorConfigurationModel(
-    primaryLanguage: String,
-    options: [TranslatorSyncOptions] = [],
-    apiKey: String? = nil,
-    localFilePath: URL? = nil
-)
-```
-
-Moreover, the method `setDefaultsStrings(fileURL: URL)` of the `Translator` class does not exist anymore. 
-To set an offline file as fallback in case of remote errors, now you need to: 
-
-1. Download the JSON file with the [correct schema](#external-file) from the TrAPP web-app.
-2. Put the JSON file in Xcode.
-3. In the `TranslatorConfigurationModel` initializer, set `localFilePath` to the JSON file path, without setting the `.localOnly` option.
-
-***
-
-TrAPP is a platform that allow to manage the localization of mobile and web apps. This repository contains the library to integrate TrAPP with iOS mobile apps.
-The library handles the following features:
-
-- Authentication
-- Synchronization
-- Translation
-
+Version 1.1.1
 
 # Overview
 
@@ -178,7 +150,7 @@ These states could be used to ensure that the translation operation is done only
 
 ### Localization
 
-After the synchronization, localization keys can be translated. To do it there are two functions, `translate` and `getTranslationFor`; the difference between them is how the not-found error is handled.
+After the synchronization, localization keys can be translated. To do it there are two functions, `translate` and `getTranslationFor`; the difference between them is how the translation errors are handled.
 
 ``` swift
 let string1 = translator.translate("test.plain")
@@ -202,7 +174,7 @@ let string2 = translator.translate("test.substring2", ["ipsum", "consectetur"])
 // string2 -> "Lorem consectetur dolor sit amet, ipsum adipiscing elit."
 ```
 
-> **_NOTE:_**  When using the method `getTranslationFor`, the `DatabaseError` will describe the reason of the failure.
+> **_NOTE:_**  If placeholder substitution within the getTranslationFor method fails, a ReplacingError exception will be raised. This exception will contain a detailed description of the underlying cause for the substitution failure.
 
 ### Change language
 
