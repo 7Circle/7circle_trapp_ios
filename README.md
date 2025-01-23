@@ -18,14 +18,14 @@ This Swift library allows iOS developers to retrieve and use the translations of
 
 You can add TrAPP library to an Xcode project by adding it to your project as a package.
 
-> https://github.com/zero12srl/TrAPP-lib-iOS.git
+> https://github.com/7Circle/7circle_trapp_ios
 
 You can add TrAPP in a [SwiftPM](https://swift.org/package-manager/) project by adding
 it to the `Package.swift`:
 
 ``` swift
 dependencies: [
-  .package(url: "https://github.com/zero12srl/TrAPP-lib-iOS.git", .upToNextMajor(from: "1.0.0"))
+  .package(url: "https://github.com/7Circle/7circle_trapp_ios", .upToNextMajor(from: "1.0.0"))
 ]
 ```
 
