@@ -3,35 +3,7 @@
 </p>
 
 # TrAPP iOS Library
-Version 1.1.0
-
-## ⚠️ Breaking Changes
-With the introduction of offline mode in version 1.1.0, the order of the parameters to be passed to the `init()` of `TranslatorConfigurationModel` has changed. The new signature is the following:
-```swift
-TranslatorConfigurationModel(
-    primaryLanguage: String,
-    options: [TranslatorSyncOptions] = [],
-    apiKey: String? = nil,
-    localFilePath: URL? = nil
-)
-```
-
-Moreover, the method `setDefaultsStrings(fileURL: URL)` of the `Translator` class does not exist anymore. 
-To set an offline file as fallback in case of remote errors, now you need to: 
-
-1. Download the JSON file with the [correct schema](#external-file) from the TrAPP web-app.
-2. Put the JSON file in Xcode.
-3. In the `TranslatorConfigurationModel` initializer, set `localFilePath` to the JSON file path, without setting the `.localOnly` option.
-
-***
-
-TrAPP is a platform that allow to manage the localization of mobile and web apps. This repository contains the library to integrate TrAPP with iOS mobile apps.
-The library handles the following features:
-
-- Authentication
-- Synchronization
-- Translation
-
+Version 1.1.1
 
 # Overview
 
